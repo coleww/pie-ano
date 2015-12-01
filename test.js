@@ -1,8 +1,7 @@
 var tap = require('tape')
 require("web-audio-mock")
-var window = window || {}
-window.AudioContext = window.AudioContext || window.webkitAudioContext
-var ac = new window.AudioContext()
+AudioContext = AudioContext || webkitAudioContext
+var ac = new AudioContext()
 var synth = require('./')(ac)
 
 tap.test('conforms to the basic spec', function (t) {
