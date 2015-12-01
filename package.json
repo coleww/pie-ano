@@ -21,5 +21,13 @@
     "piano"
   ],
   "author": "Cole Willsea <coleww@gmail.com> (http://colewillsea.com/)",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wham-js/pie-ano.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wham-js/pie-ano/issues"
+  },
+  "homepage": "https://github.com/wham-js/pie-ano#readme"
 }
