@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "build": "browserify demo.js -o bundle.js"
+  },
+  "devDependencies": {
+    "tape": "^4.2.2",
+    "web-audio-mock": "^0.1.9"
+  },
+  "dependencies": {
+    "make-distortion-curve": "^1.0.0",
+    "midiutils": "0.0.4"
+  },
+  "name": "pie-ano",
+  "description": "a lush piano synthesizer, built for WAADVENT calendar 2015",
+  "keywords": [
+    "web audio",
+    "synth",
+    "piano"
+  ],
+  "author": "Cole Willsea <coleww@gmail.com> (http://colewillsea.com/)",
+  "license": "MIT"
+}
