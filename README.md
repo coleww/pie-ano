@@ -14,7 +14,7 @@ var pie = require('pie-ano')(ac)
 pie.connect(ac.destination)
 
 // set the frequency/ADSR
-pie.update({midiNote: 72, attack: 0.3, decay: 0.1, sustain: 0.3, release: 0.5})
+pie.update({midiNote: 72, attack: 0.3, decay: 0.1, sustain: 0.3, release: 0.5, peak: 0.5, mid: 0.3, end: 0.00000001})
 // and trigger it!
 pie.start(ac.currentTime)
 

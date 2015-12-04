@@ -1,5 +1,6 @@
 var makeDistortionCurve = require('make-distortion-curve')
 var MIDIUtils = require('midiutils')
+var adsr = require('a-d-s-r')
 
 // yr function should accept an audioContext, and optional params/opts
 module.exports = function (ac, opts) {
@@ -90,7 +91,9 @@ module.exports = function (ac, opts) {
     decay: 0.05,
     sustain: 0.3,
     release: 0.1,
-    chord: false // TODO: build chords instead of playing huge notes as an option?
+    peak: 0.5,
+    mid: 0.3,
+    end: 0.000001
   }
 
   return {
@@ -105,11 +108,15 @@ module.exports = function (ac, opts) {
       audioNodes.osc3.start(ac.currentTime)
     },
     start: function (when) {
-      audioNodes.noisegain.gain.linearRampToValueAtTime(audioNodes.settings.sustain / 4.0, when)
-      audioNodes.gain.gain.linearRampToValueAtTime(audioNodes.settings.sustain + 0.2, when + audioNodes.settings.attack)
-      audioNodes.gain.gain.linearRampToValueAtTime(audioNodes.settings.sustain, when + audioNodes.settings.decay)
-      audioNodes.gain.gain.linearRampToValueAtTime(0, when + audioNodes.settings.release)
-      audioNodes.noisegain.gain.linearRampToValueAtTime(0, when + audioNodes.settings.release)
+      console.log('start', audioNodes.settings)
+
+      adsr(audioNodes.gain, when, audioNodes.settings)
+      console.log('one')
+      var cloned = JSON.parse(JSON.stringify(audioNodes.settings))
+      cloned.peak /= 2.0
+      cloned.mid /= 2.0
+      console.log('didit', cloned)
+      adsr(audioNodes.noisegain, when, cloned)
     },
     stop: function (when) {
       audioNodes.oscnoise.stop(when)
