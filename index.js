@@ -108,14 +108,14 @@ module.exports = function (ac, opts) {
       audioNodes.osc3.start(ac.currentTime)
     },
     start: function (when) {
-      console.log('start', audioNodes.settings)
+      // console.log('start', audioNodes.settings)
 
       adsr(audioNodes.gain, when, audioNodes.settings)
-      console.log('one')
+      // console.log('one')
       var cloned = JSON.parse(JSON.stringify(audioNodes.settings))
       cloned.peak /= 2.0
       cloned.mid /= 2.0
-      console.log('didit', cloned)
+      // console.log('didit', cloned)
       adsr(audioNodes.noisegain, when, cloned)
     },
     stop: function (when) {
