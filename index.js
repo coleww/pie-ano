@@ -95,17 +95,15 @@ module.exports = function (ac, opts) {
     mid: 0.3,
     end: 0.000001
   }
-
+    // just let them buzz forever, deal with "notes" via adsr tricks
+  audioNodes.oscnoise.start(ac.currentTime)
+  audioNodes.osc1.start(ac.currentTime)
+  audioNodes.osc2.start(ac.currentTime)
+  audioNodes.osc3.start(ac.currentTime)
   return {
     connect: function (input) {
       // // this function should call `connect` on yr output nodes with `input` as the arg
       audioNodes.mainfilter.connect(input)
-
-      // just let them buzz forever, deal with "notes" via adsr tricks
-      audioNodes.oscnoise.start(ac.currentTime)
-      audioNodes.osc1.start(ac.currentTime)
-      audioNodes.osc2.start(ac.currentTime)
-      audioNodes.osc3.start(ac.currentTime)
     },
     start: function (when) {
       // console.log('start', audioNodes.settings)
